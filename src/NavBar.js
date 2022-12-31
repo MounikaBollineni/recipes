@@ -15,8 +15,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Modal } from '@mui/material';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
-import { List } from './List';
-import  LoginForm  from './LoginForm';
+import { List } from './Components/List';
+import LoginForm from './Components/LoginForm';
+import Register from './Components/Register';
+import AddImage from './Components/AddImage';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -62,7 +64,9 @@ export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [img,setImg]=React.useState("")
-  const [open,setOpen]=React.useState(false);
+  const [openLogin,setOpenLogin]=React.useState(false);
+  const [openRegister,setOpenRegister]=React.useState(false);
+  const [openAddImage,setOpenAddImage]=React.useState(false);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -84,7 +88,15 @@ export default function PrimarySearchAppBar() {
   };
 
   const setLogin=()=>{
-    setOpen(!open)
+    setOpenLogin(true)
+  }
+
+  const setRegister=()=>{
+    setOpenRegister(true)
+  }
+
+  const setImageTemplate=()=>{
+    setOpenAddImage(true);
   }
 
   const search=(e)=>{
@@ -174,6 +186,8 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <Button color="inherit" onClick={setLogin}>Login</Button>
+            <Button color="inherit" onClick={setRegister}>Register</Button>
+            <Button color="inherit" onClick={setImageTemplate}>Add Recipe</Button>
             <IconButton
               size="large"
               edge="end"
@@ -203,7 +217,9 @@ export default function PrimarySearchAppBar() {
       {renderMobileMenu}
       {renderMenu}
     </Box>
-    {open ?<LoginForm/> :""}
+    {openLogin ?<LoginForm/> :""}
+    {openRegister ?<Register/> :""}
+    {openAddImage ?<AddImage/> :""}
     <List name={img}/>
     </div>
   );

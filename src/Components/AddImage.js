@@ -8,40 +8,39 @@ import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import RamenDiningRoundedIcon from '@mui/icons-material/RamenDiningRounded';
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export default function LoginForm() {
+export default function AddImage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get("email"),
-          password: data.get("password")
-        });
       };
+      const closeLogin=()=>{
+        document.getElementById("login").style.display="none";
+      }
         return(
             <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container id="login" component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
+        <Box 
           sx={{
             marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center"
           }}
-          className="login-form"
+          className="add-form"
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
+            <RamenDiningRoundedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Add Recipe
           </Typography>
           <Box
             component="form"
@@ -54,27 +53,38 @@ export default function LoginForm() {
               margin="normal"
               required
             //   fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="Name"
+              label="Name"
+              name="name"
+              autoComplete="name"
               autoFocus
             />
             <TextField
               margin="normal"
               required
             //   fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              name="description"
+              label="Description"
+              id="description"
+              autoComplete="description"
             />
+            <TextField
+              margin="normal"
+              required
+            //   fullWidth
+              name="ingredients"
+              label="Ingredients"
+              id="ingredients"
+              autoComplete="ingredients"
+            />
+            <TextField
+            margin="normal"
+            id="outlined-multiline-static"
+            label="Multiline"
+            multiline
+            rows={5}
+        />
             </div>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <div className="buttons">
             <Button
               type="submit"
@@ -83,7 +93,7 @@ export default function LoginForm() {
               sx={{ mt: 2, mb: 1 }}
               style={{width:"15vh"}}
             >
-              Sign In
+              Add
             </Button>
             <Button
               type="submit"
@@ -91,22 +101,11 @@ export default function LoginForm() {
               variant="contained"
               sx={{ mt: 2, mb: 1 }}
               style={{width:"15vh"}}
+              onClick={closeLogin}
             >
               Cancel
             </Button>
             </div>
-            <Grid> 
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>

@@ -52,12 +52,19 @@
   flex-direction: row;
   gap: 10vh;
 }
-
-.login-form{
+.form{
   position: fixed;
   background: #f1f1f1;
   width: 50vh;
 }
+
+.add-form{
+  position: fixed;
+  background: #f1f1f1;
+  width: 50vh;
+  margin-bottom: auto;
+}
+
 .text{
   display: flex;
   flex-direction: column;
