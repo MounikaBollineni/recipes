@@ -49,4 +49,16 @@
 .buttons{
   display: flex;
   justify-content: space-around;
+  flex-direction: row;
+  gap: 10vh;
+}
+
+.login-form{
+  position: fixed;
+  background: #f1f1f1;
+  width: 50vh;
+}
+.text{
+  display: flex;
+  flex-direction: column;
 }

@@ -35,6 +35,7 @@ export default function LoginForm() {
             flexDirection: "column",
             alignItems: "center"
           }}
+          className="login-form"
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
@@ -48,7 +49,7 @@ export default function LoginForm() {
             noValidate
             sx={{ mt: 1 }}
           >
-            <div className="d-flex flex-column">
+            <div className="text">
             <TextField
               margin="normal"
               required
@@ -80,7 +81,7 @@ export default function LoginForm() {
               fullWidth
               variant="contained"
               sx={{ mt: 2, mb: 1 }}
-              style={{width:"100px", marginLeft:"20%"}}
+              style={{width:"15vh"}}
             >
               Sign In
             </Button>
@@ -89,7 +90,7 @@ export default function LoginForm() {
               fullWidth
               variant="contained"
               sx={{ mt: 2, mb: 1 }}
-              style={{width:"100px",  marginRight:"20%"}}
+              style={{width:"15vh"}}
             >
               Cancel
             </Button>
