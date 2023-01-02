@@ -29,16 +29,26 @@ export default function Register() {
     email:email,
     password:password
   }
-
+  const headers={
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+  }
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post("http://localhost:8080/recipes/add-user",body).then(res=>{
+        axios.post("http://localhost:8080/recipes/register",body,"no-cors",headers).then(res=>{
           if(res.status==200){
             swal({
               title: "Good job!",
-              text: "You clicked the button!",
+              text: "You are successfully registered!",
               icon: "success",
             });
+          }
+          if(res.status==500){
+            swal({
+              text: res.response.data.message,
+              icon: "warning",
+              dangerMode: true
+            })
           }
         }).catch(err=>{
           if(err.response.status==500){
