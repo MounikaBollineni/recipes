@@ -15,20 +15,24 @@ const theme = createTheme();
 export default function AddImage() {
   const[image,setImage]=React.useState(null);
 
+  const headers={
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'multipart/form-data',
+  }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         data.append("file",image);
-        axios.post("http://localhost:8080/recipes/upload",data)
+        axios.get("http://localhost:8080/recipes/upload",image)
             .then(res => {
                     console.log(res.status);
-                    alert("File uploaded successfully.")
+                    alert("File uploaded successfully.");
             })
       };
 
       const onFileChangeHandler = (e) => {
             setImage(e.target.files[0]);
-        
     };
 
       const closeLogin=()=>{
